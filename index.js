@@ -43,7 +43,7 @@ const minApiVersion = "6";
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"GetStarted","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
-	var uPF = userProfile.Response.userProfile.userProfile
+	var uPF = userProfile.userProfile
 	console.log("userProfile", uPF);
 	console.log("isSubbed", isSubscribed);
 	console.log("context", context);
@@ -54,7 +54,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	console.log("message", message)
-	console.log(message.TextMessage)
+	console.log(message.text)
 	if(message.TextMessage){
 		var userInput = message.TextMessage.text
 		var trackingData = message.TextMessage.trackingData
