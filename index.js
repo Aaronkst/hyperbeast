@@ -65,7 +65,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 	]
           })).catch(function(error){
 		console.log('error', error);
-	}
+	});
 });
 
 
