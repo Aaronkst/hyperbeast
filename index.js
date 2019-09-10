@@ -39,7 +39,7 @@ const WELCOME_KEYBOARD = {
 		}
 	]
 };
-const minApiVersion = "7";
+const minApiVersion = 7;
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
@@ -63,7 +63,9 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 			"ActionBody": "Hi"
 		}
 	]
-          }))
+          })).catch(function(error){
+		console.log('error', error);
+	}
 });
 
 
