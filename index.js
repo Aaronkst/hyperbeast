@@ -44,7 +44,26 @@ const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVers
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	var uPF = userProfile.userProfile
-	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!'),welcomeKeyboard],["Get Started"])
+	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!',
+          {
+          "Type": "keyboard",
+          "DefaultHeight": false,
+          "Revision": 1,
+          "Buttons":  [
+		{
+			"Columns": 6,
+			"Rows": 1,
+			"BgColor": "#32CD32",
+			"Text": "<font color='#FFFFFF'>Get Started</font>",
+			"InputFieldState": "hidden",
+			"TextHAlign": "center",
+			"TextVAlign": "middle",
+			"ActionType": "reply",
+			"TextSize": "Large",
+			"ActionBody": "Hi"
+		}
+	]
+          }),["Get Started"])
 });
 
 
