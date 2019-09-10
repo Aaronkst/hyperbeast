@@ -44,7 +44,7 @@ const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVers
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	var uPF = userProfile.userProfile
-	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!',
+	bot.sendMessage(uPF,new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!',
           {
           "Type": "keyboard",
           "DefaultHeight": false,
