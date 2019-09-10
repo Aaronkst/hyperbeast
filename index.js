@@ -22,7 +22,7 @@ const bot = new ViberBot({
 
 const WELCOME_KEYBOARD = {
 	"Type": "keyboard",
-	"DefaultHeight": true,
+	"DefaultHeight": false,
 	"BgColor": "#FFFFFF",
 	"Buttons": [
 		{
@@ -30,6 +30,7 @@ const WELCOME_KEYBOARD = {
 			"Rows": 1,
 			"BgColor": "#32CD32",
 			"Text": "<font color='#FFFFFF'>Get Started</font>",
+			"InputFieldState": "hidden",
 			"TextHAlign": "center",
 			"TextVAlign": "middle",
 			"ActionType": "reply",
@@ -43,14 +44,20 @@ const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVers
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) =>
 	console.log(userProfile)
-	/*bot.sendMessage([new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`),
+	bot.sendMessage([new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`),
 			welcomeKeyboard])
-			*/);
+			);
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	console.log(message);
+	if(message.TextMessage){
+		var userInput = message.TextMessage.text;
+		var trackingData = message.TextMessage.trackingData;
+	}
+	console.log("userinput",userInput);
+	console.log("trackingData", trackingData);
 });
 
 const port = process.env.PORT || 3000;
