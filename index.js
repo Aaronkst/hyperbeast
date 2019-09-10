@@ -28,7 +28,7 @@ const WELCOME_KEYBOARD = {
 			"Columns": 3,
 			"Rows": 2,
 			"BgColor": "#32CD32",
-			"Text": "Get Started"
+			"Text": "Get Started",
 			"ActionType": "reply",
 			"ActionBody": "Hi"
 		}
