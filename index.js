@@ -22,14 +22,18 @@ const bot = new ViberBot({
 
 const WELCOME_KEYBOARD = {
 	"Type": "keyboard",
-	"Revision": 1,
+	"DefaultHeight": true,
+	"BgColor": "#FFFFFF",
 	"Buttons": [
 		{
-			"Columns": 3,
-			"Rows": 2,
+			"Columns": 6,
+			"Rows": 1,
 			"BgColor": "#32CD32",
-			"Text": "Get Started",
+			"Text": "<font color='#FFFFFF'>Get Started</font>",
+			"TextHAlign": "center",
+			"TextVAlign": "middle",
 			"ActionType": "reply",
+			"TextSize": "Large",
 			"ActionBody": "Hi"
 		}
 	]
@@ -38,9 +42,10 @@ const minApiVersion = "6";
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) =>
-	console.log(userProfile);
+	console.log(userProfile)
 	/*bot.sendMessage([new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`),
-			welcomeKeyboard]));*/
+			welcomeKeyboard])
+			*/);
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
