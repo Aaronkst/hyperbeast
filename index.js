@@ -23,12 +23,12 @@ const bot = new ViberBot({
 const WELCOME_KEYBOARD = {
 	"Type": "keyboard",
 	"DefaultHeight": false,
-	"BgColor": "#FFFFFF",
+	"BgColor": "#ffffff",
 	"Buttons": [
 		{
 			"Columns": 6,
 			"Rows": 1,
-			"BgColor": "#32CD32",
+			"BgColor": "#4b3695",
 			"Text": "<font color='#FFFFFF'>Get Started</font>",
 			"InputFieldState": "hidden",
 			"TextHAlign": "center",
@@ -55,13 +55,78 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	if(message.text){
 		var userInput = message.text
-		var trackingData = message.trackingData
+		var trackingData = message.trackingData[0]
 	}
 	console.log("userinput", userInput)
 	console.log("trackingData", trackingData)
 
 	if(userInput == 'Hi'){
-		console.log('write main menu here');
+		bot.sendMessage(uPF,[
+			new TextMessage('These are the Hyperbeast Themed products!'),
+			new RichMediaMessage(
+			{
+      "ButtonsGroupColumns": 6,
+      "ButtonsGroupRows": 6,
+      "BgColor": "#3771b0",
+      "Buttons": [ 
+       {
+        "Columns":6,
+        "Rows":3,
+        "ActionType":"none",            
+        "Image":"https://steamuserimages-a.akamaihd.net/ugc/708527825002071756/D0DC2B2A733A820E5FBD83D6187E3A26BEE57137/"
+       },
+       {
+        "Columns":6,
+        "Rows":2,
+        "ActionType":"none",
+        "BgColor": "#3771b0",
+        "Text":"<font color='#ffffff'><b>CS Skins</b></font><font color='#ffffff'><br>Rifles, Pistols</font>",
+        "TextSize":"medium",
+        "TextVAlign":"middle",
+        "TextHAlign":"left"
+       },
+       {
+        "Columns":6,
+        "Rows":1,
+        "ActionType":"reply",
+        "ActionBody":"csskins",
+        "Text":"<font color='#ffffff'> View Details </font>",
+        "BgColor": "#4b3695",
+        "TextSize":"medium",
+        "TextVAlign":"middle",
+        "TextHAlign":"center"
+       },
+     {
+        "Columns":6,
+        "Rows":3,
+        "ActionType":"none",           
+        "Image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6uj4UiN4jj0XMxYa2XiaIRt20M-wXlWomX35WOGqMO97ilJfAbA"
+       },
+       {
+        "Columns":6,
+        "Rows":2,
+        "ActionType":"none",
+        "BgColor": "#3771b0",
+        "Text":"<font color='#ffffff'><b>Hardware</b></font><font color='#ffffff'><br>Mouse, Mousepads</font>",
+        "TextSize":"medium",
+        "TextVAlign":"middle",
+        "TextHAlign":"left"
+       },
+       {
+        "Columns":6,
+        "Rows":1,
+        "ActionType":"reply",
+        "ActionBody":"gaminggear",
+        "Text":"<font color='#ffffff'> View Details </font>",
+        "BgColor": "#4b3695",
+        "TextSize":"medium",
+        "TextVAlign":"middle",
+        "TextHAlign":"center"
+       }
+       ]      
+       
+    }
+			)])
 	}
 	
 });
