@@ -41,9 +41,12 @@ const WELCOME_KEYBOARD = {
 };
 const minApiVersion = 7;
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
+
+const userprofile = []
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
-	var uPF = userProfile.userProfile
+	const uPF = userProfile.userProfile
+	userprofile.push(uPF);
 	bot.sendMessage(uPF,new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!',{
 	"Type": "keyboard",
 	"DefaultHeight": false,
@@ -78,7 +81,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	console.log("trackingData", trackingData)
 
 	if(userInput == 'Hi'){
-		bot.sendMessage(uPF,[
+		bot.sendMessage(userprofile[0],[
 			new TextMessage('These are the Hyperbeast Themed products!'),
 			new RichMediaMessage(
 			{
