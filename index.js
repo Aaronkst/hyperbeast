@@ -42,9 +42,7 @@ const WELCOME_KEYBOARD = {
 const minApiVersion = "6";
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"GetStarted","","",minApiVersion);
 // Perfect! Now here's the key part:
-bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) =>	
-	console.log("onFinish", onFinish)
-	);
+bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => console.log("onFinish", onFinish));
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
