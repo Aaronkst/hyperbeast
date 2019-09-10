@@ -39,28 +39,23 @@ const WELCOME_KEYBOARD = {
 		}
 	]
 };
-const minApiVersion = "6";
+const minApiVersion = "7";
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"GetStarted","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	var uPF = userProfile.userProfile
-	console.log("userProfile", uPF);
-	console.log("isSubbed", isSubscribed);
-	console.log("context", context);
-	console.log("onFinish", onFinish);
+	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!'),welcomeKeyboard])
 });
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
-	console.log("message", message)
-	console.log(message.text)
-	if(message.TextMessage){
+	if(message.text){
 		var userInput = message.TextMessage.text
 		var trackingData = message.TextMessage.trackingData
-		console.log("userinput", userInput)
-		console.log("trackingData", trackingData)
 	}
+	console.log("userinput", userInput)
+	console.log("trackingData", trackingData)
 	
 });
 
