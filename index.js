@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000;
 app.use("/webhook", bot.middleware());
 app.listen(port, () => {
   console.log(`Application running on port: ${port}`);
-  bot.setWebhook(`${process.env.EXPOSE_URL}/webhook`).catch(error => {
+  bot.setWebhook(`https://hyperbeast.herokuapp.com/webhook`).catch(error => {
     console.log('Can not set webhook on following server. Is it running?');
     console.error(error);
     process.exit(1);
