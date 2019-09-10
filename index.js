@@ -11,8 +11,12 @@ const bot = new ViberBot({
 	avatar: "https://dl-media.viber.com/1/share/2/long/vibes/icon/image/0x0/800b/b85aacbdc579999439e781f37f8bec50b1238229df591acc3996c50e97b5800b.jpg" // It is recommended to be 720x720, and no more than 100kb.
 });
 
-
+const minApiVersion = 6;
 // Perfect! Now here's the key part:
+bot.onConversationStarted((userProfile, isSubscribed, context, onFinish) =>
+	onFinish(new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`)));
+
+
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	console.log(message);
