@@ -38,8 +38,9 @@ const minApiVersion = "6";
 const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) =>
-	onFinish([new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`),
-			welcomeKeyboard]));
+	console.log(userProfile);
+	/*bot.sendMessage([new TextMessage(`Hi, ${userProfile.name}! Nice to meet you.`),
+			welcomeKeyboard]));*/
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
