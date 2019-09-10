@@ -40,11 +40,11 @@ const WELCOME_KEYBOARD = {
 	]
 };
 const minApiVersion = "7";
-const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"GetStarted","","",minApiVersion);
+const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	var uPF = userProfile.userProfile
-	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!'),welcomeKeyboard])
+	bot.sendMessage(uPF,[new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!'),welcomeKeyboard],["Get Started"])
 });
 
 
@@ -56,6 +56,10 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	}
 	console.log("userinput", userInput)
 	console.log("trackingData", trackingData)
+
+	if(userInput == 'Hi'){
+		console.log('write main menu here');
+	}
 	
 });
 
