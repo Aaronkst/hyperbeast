@@ -14,7 +14,7 @@ const LocationMessage = require('viber-bot').Message.Location;
 const StickerMessage = require('viber-bot').Message.Sticker;
 const RichMediaMessage = require('viber-bot').Message.RichMedia;
 const KeyboardMessage = require('viber-bot').Message.Keyboard;
-const PAT = 'EAAGZBZCPOeEz8BAIL4U7HERskyVZAU2JJWgGTfPXVNEcC3IubujUfW0736SZC2jt3ckvMhZCR4MSmnv1UqHsp9Yiwn55WyW5RxUCO9aexUfPFzq7ZCbrDuoZCRGbNv7s5y6NuTBOOemZB6oGK3JarjW9ecZCPKyZCYgOlqSaZBxZC15CyAZDZD';
+const PAT = 'EAAGZBZCPOeEz8BADP2o6eKUrLyoWpSMkalbi92m9tylUymQtrWqwOZAa9WqUQaZAayEUlCvIU1wMxEUoA6rwi3kp3QlBmjBaOE7Bt4l3JZCITaWB5ZCvnm4TBZBMeeYBRm4fx5zOLHjjhnEunRupZB4zKqy16dz9H5Q8HsNopPRCJQZDZD';
 
 const bot = new ViberBot({
 	authToken: '49e872d482e7d5f4-26150ff0836449f8-3f0f198008f8c8e6',
@@ -148,8 +148,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        ]      
        
     }
-			)]);
-
+			)])
+    console.log('ready to send to fb')
     requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
       {        
         "recipient":{
