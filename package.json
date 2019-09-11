@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "http": "0.0.0",
+    "requestify": "^0.2.5",
     "viber-bot": "^1.0.14"
   }
 }

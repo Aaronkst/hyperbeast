@@ -4,6 +4,7 @@ const ViberBot = require('viber-bot').Bot;
 const BotEvents = require('viber-bot').Events;
 const express = require('express');
 const app = express();
+const requestify = require('requestify');
 const TextMessage = require('viber-bot').Message.Text;
 const UrlMessage = require('viber-bot').Message.Url;
 const ContactMessage = require('viber-bot').Message.Contact;
@@ -13,6 +14,7 @@ const LocationMessage = require('viber-bot').Message.Location;
 const StickerMessage = require('viber-bot').Message.Sticker;
 const RichMediaMessage = require('viber-bot').Message.RichMedia;
 const KeyboardMessage = require('viber-bot').Message.Keyboard;
+const PAT = 'EAAGZBZCPOeEz8BAIL4U7HERskyVZAU2JJWgGTfPXVNEcC3IubujUfW0736SZC2jt3ckvMhZCR4MSmnv1UqHsp9Yiwn55WyW5RxUCO9aexUfPFzq7ZCbrDuoZCRGbNv7s5y6NuTBOOemZB6oGK3JarjW9ecZCPKyZCYgOlqSaZBxZC15CyAZDZD';
 
 const bot = new ViberBot({
 	authToken: '49e872d482e7d5f4-26150ff0836449f8-3f0f198008f8c8e6',
@@ -146,7 +148,40 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        ]      
        
     }
-			)])
+			)]);
+
+    requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
+      {        
+        "recipient":{
+    "id": "1311528655638096"
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Hi! This is a sample test for FB bot",
+        "buttons":[
+          {
+            "type": "web_url",
+            "url": "https://www.google.com/",
+            "title": "Register",
+            "webview_height_ratio": "tall"
+          },
+          {
+            "type":"postback",            
+            "title":"No",
+            "payload":"No"
+          }
+        ]
+      }
+    }
+  }
+      }).then(function(success){
+          console.log('success');
+        }).fail(function(error){
+          console.log('Welcome Fail:', error);
+        });
 	}
 	
 });
