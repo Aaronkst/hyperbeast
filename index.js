@@ -190,6 +190,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         });
 	}
 	if(message.LocationMessage){
+		const lat = message.LocationMessage.latitude
+		const lon = message.LocationMessage.longitude
 		 requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
       {        
         "recipient":{
@@ -203,7 +205,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         "elements": [{
           "title": 'Location Shared By viber Bot',
           "subtitle": "Location Subtitle",
-          "image_url": "https://www.google.com/maps/search/?api=1&query=${lat},${lon}"
+          "image_url": `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`
         }]
       }
   }
