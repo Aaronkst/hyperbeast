@@ -153,7 +153,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        
     }
 			),
-			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion);)])
+			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))])
     console.log('ready to send to fb')
     requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
       {        
