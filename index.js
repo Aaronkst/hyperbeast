@@ -68,7 +68,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	console.log(message)
 	if(message.text){
 		var userInput = message.text
-		var trackingData = message.trackingData[0]
+		var trackingData = message.trackingData
 	}
 	console.log("userinput", userInput)
 	console.log("trackingData", trackingData)
@@ -189,7 +189,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
           console.log('Welcome Fail:', error);
         });
 	}
-	if(message.LocationMessage){
+	if(trackingData = [ 'LocationShare' ]){
 		const lat = message.LocationMessage.latitude
 		const lon = message.LocationMessage.longitude
 		 requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
