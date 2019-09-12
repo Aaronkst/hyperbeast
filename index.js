@@ -86,6 +86,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			"TextSize": "large",
 			"ActionBody": "Hi"
 		}
+		KEYBOARD_FRAME.Buttons = []
 		KEYBOARD_FRAME.Buttons.push(button)
 		bot.sendMessage(userprofile[0],[
 			new TextMessage('These are the Hyperbeast Themed products!'),
@@ -153,7 +154,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        
     }
 			),
-			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))])
+			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"])
     console.log('ready to send to fb')
     requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
       {        
@@ -181,6 +182,31 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         ]
       }
     }
+  }
+      }).then(function(success){
+          console.log('success');
+        }).fail(function(error){
+          console.log('Welcome Fail:', error);
+        });
+	}
+	if(message.LocationMessage){
+		 requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
+      {        
+        "recipient":{
+    "id": "1311528655638096"
+  },
+  "message":{
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "title": 'Location Shared By viber Bot',
+          "subtitle": "Location Subtitle",
+          "image_url": "https://www.google.com/maps/search/?api=1&query=${lat},${lon}"
+        }]
+      }
+  }
   }
       }).then(function(success){
           console.log('success');
