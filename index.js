@@ -22,27 +22,16 @@ const bot = new ViberBot({
 	avatar: "https://dl-media.viber.com/1/share/2/long/vibes/icon/image/0x0/800b/b85aacbdc579999439e781f37f8bec50b1238229df591acc3996c50e97b5800b.jpg" // It is recommended to be 720x720, and no more than 100kb.
 });
 
-const WELCOME_KEYBOARD = {
+const KEYBOARD_FRAME = {
 	"Type": "keyboard",
 	"DefaultHeight": false,
 	"BgColor": "#ffffff",
 	"Buttons": [
-		{
-			"Columns": 6,
-			"Rows": 1,
-			"BgColor": "#4b3695",
-			"Text": "<font color='#FFFFFF'>Get Started</font>",
-			"InputFieldState": "hidden",
-			"TextHAlign": "center",
-			"TextVAlign": "middle",
-			"ActionType": "reply",
-			"TextSize": "large",
-			"ActionBody": "Hi"
-		}
+		
 	]
 };
 const minApiVersion = 7;
-const welcomeKeyboard = new KeyboardMessage(WELCOME_KEYBOARD,"","","",minApiVersion);
+
 
 const userprofile = []
 // Perfect! Now here's the key part:
@@ -76,6 +65,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
+	console.log(message)
 	if(message.text){
 		var userInput = message.text
 		var trackingData = message.trackingData[0]
@@ -84,6 +74,19 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	console.log("trackingData", trackingData)
 
 	if(userInput == 'Hi'){
+		let button = {
+			"Columns": 6,
+			"Rows": 1,
+			"BgColor": "#4b3695",
+			"Text": "<font color='#FFFFFF'>Location Share</font>",
+			"InputFieldState": "hidden",
+			"TextHAlign": "center",
+			"TextVAlign": "middle",
+			"ActionType": "location-picker",
+			"TextSize": "large",
+			"ActionBody": "Hi"
+		}
+		KEYBOARD_FRAME.buttons.push(button)
 		bot.sendMessage(userprofile[0],[
 			new TextMessage('These are the Hyperbeast Themed products!'),
 			new RichMediaMessage(
@@ -149,7 +152,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        ]      
        
     }
-			)])
+			),
+			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion);)])
     console.log('ready to send to fb')
     requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
       {        
