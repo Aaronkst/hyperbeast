@@ -66,7 +66,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
    }
 },
   headers: {
-    "X-Viber-Auth-Token": "4a47a72da1e7d401-3c3f3c745b40d787-3f3ce1a971e0d8b9"
+    "X-Viber-Auth-Token": "49e872d482e7d5f4-26150ff0836449f8-3f0f198008f8c8e6"
   }
 }
   ).then(function(success){
