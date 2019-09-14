@@ -54,7 +54,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
     "ActionBody": "Hi"
   }
   KEYBOARD_FRAME.receiver = uPF.id;
-  KEYBOARD_FRAME.tracking_data = "Get_Started"
+  KEYBOARD_FRAME.tracking_data = "[Get_Started]"
   KEYBOARD_FRAME.text = "Hi "+uPF.name+"! Welcome! Nice to meet you!";
   KEYBOARD_FRAME.keyboard.Buttons.push(button);
 	requestify.request('https://chatapi.viber.com/pa/send_message',{
