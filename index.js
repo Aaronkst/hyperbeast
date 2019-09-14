@@ -57,7 +57,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 			"ActionBody": "Hi"
 		}
 	]
-}),'GetStarted').catch(function(error){
+}),{'GetStarted'}).catch(function(error){
 		console.log('error', error);
 	});
 });
@@ -155,39 +155,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     }
 			),
 			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"])
-    console.log('ready to send to fb')
-    requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
-      {        
-        "recipient":{
-    "id": "1311528655638096"
-  },
-  "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"Hi! This is a sample test for FB bot",
-        "buttons":[
-          {
-            "type": "web_url",
-            "url": "https://www.google.com/",
-            "title": "Register",
-            "webview_height_ratio": "tall"
-          },
-          {
-            "type":"postback",            
-            "title":"No",
-            "payload":"No"
-          }
-        ]
-      }
-    }
-  }
-      }).then(function(success){
-          console.log('success');
-        }).fail(function(error){
-          console.log('Welcome Fail:', error);
-        });
+    
 	}
 	if(trackingData = [ 'LocationShare' ]){
 		const lat = message.LocationMessage.latitude
