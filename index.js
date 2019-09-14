@@ -23,18 +23,12 @@ const bot = new ViberBot({
 });
 
 const KEYBOARD_FRAME = {
-   "receiver": "",
-   "min_api_version":7,
-   "type":"text",
-   "tracking_data":"['get started']",
-   "text":"",
-   "keyboard":{
       "Type":"keyboard",
       "DefaultHeight":false,
       "InputFieldState": "hidden",
       "Buttons":[]
    }
-}
+
 
 const userprofile = []
 // Perfect! Now here's the key part:
@@ -53,17 +47,10 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
     "TextSize": "large",
     "ActionBody": "Hi"
   }
-  KEYBOARD_FRAME.receiver = uPF.id;
-  KEYBOARD_FRAME.text = "Hi "+uPF.name+"! Welcome! Nice to meet you!";
-  KEYBOARD_FRAME.keyboard.Buttons.push(button);
-	requestify.request('https://chatapi.viber.com/pa/send_message',{
-  method: 'POST',
-  body: KEYBOARD_FRAME,
-  headers: {
-    "X-Viber-Auth-Token": "49e872d482e7d5f4-26150ff0836449f8-3f0f198008f8c8e6"
-  }
-}
-  )
+  KEYBOARD_FRAME.Buttons = []
+  KEYBOARD_FRAME.Buttons.push(button);
+	bot.sendMessage(userprofile[0],[
+      new TextMessage('These are the Hyperbeast Themed products!'),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["GetStarted"]
 });
 
 
