@@ -57,7 +57,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 			"ActionBody": "Hi"
 		}
 	]
-}),GetStarted).catch(function(error){
+}),'GetStarted').catch(function(error){
 		console.log('error', error);
 	});
 });
