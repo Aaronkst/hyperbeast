@@ -36,30 +36,44 @@ const minApiVersion = 7;
 const userprofile = []
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
-	const uPF = userProfile.userProfile
-  console.log(uPF);
+	const uPF = userProfile.userProfile;
 	userprofile.push(uPF);
-	bot.sendMessage(uPF,new TextMessage('Hi '+uPF.name+'! Welcome to Hyperbeast!',{
-	"Type": "keyboard",
-	"DefaultHeight": false,
-	"BgColor": "#ffffff",
-	"Buttons": [
-		{
-			"Columns": 6,
-			"Rows": 1,
-			"BgColor": "#4b3695",
-			"Text": "<font color='#FFFFFF'>Get Started</font>",
-			"InputFieldState": "hidden",
-			"TextHAlign": "center",
-			"TextVAlign": "middle",
-			"ActionType": "reply",
-			"TextSize": "large",
-			"ActionBody": "Hi"
-		}
-	]
-}),'GetStarted').catch(function(error){
-		console.log('error', error);
-	});
+	requestify.request('https://chatapi.viber.com/pa/send_message',{
+  method: 'POST',
+  body: {
+   "receiver":uPF.id,
+   "min_api_version":7,
+   "type":"text",
+   "text":"Hi "+uPF.name+"! Nice to meet you! Welcome!",
+   "keyboard":{
+      "Type":"keyboard",
+      "DefaultHeight":true,
+      "Buttons":[
+         {
+            "Columns": 6,
+            "Rows": 1,
+            "BgColor": "#4b3695",
+            "Text": "<font color='#FFFFFF'>Get Started</font>",
+            "InputFieldState": "hidden",
+            "TextHAlign": "center",
+            "TextVAlign": "middle",
+            "ActionType": "reply",
+            "TextSize": "large",
+            "ActionBody": "Hi"
+
+         }
+      ]
+   }
+},
+  headers: {
+    "X-Viber-Auth-Token": "4a47a72da1e7d401-3c3f3c745b40d787-3f3ce1a971e0d8b9"
+  }
+}
+  ).then(function(success){
+          console.log('keyboard success');
+        }).fail(function(error){
+          console.log('keyboard Error:', error);
+        })
 });
 
 
@@ -157,33 +171,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"])
     
 	}
-	if(trackingData = [ 'LocationShare' ]){
-		const lat = message.LocationMessage.latitude
-		const lon = message.LocationMessage.longitude
-		 requestify.post('https://graph.facebook.com/v4.0/me/messages?access_token='+PAT,
-      {        
-        "recipient":{
-    "id": "1311528655638096"
-  },
-  "message":{
-    "attachment": {
-      "type": "template",
-      "payload": {
-        "template_type": "generic",
-        "elements": [{
-          "title": 'Location Shared By viber Bot',
-          "subtitle": "Location Subtitle",
-          "image_url": `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`
-        }]
-      }
-  }
-  }
-      }).then(function(success){
-          console.log('success');
-        }).fail(function(error){
-          console.log('Welcome Fail:', error);
-        });
-	}
+	
 	
 });
 
