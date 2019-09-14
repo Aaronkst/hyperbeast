@@ -63,7 +63,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	console.log("userinput", userInput)
 	console.log("trackingData", trackingData)
 
-	/*if(userInput == 'Hi'){
+	if(trackingData == "[ 'GetStarted' ]"){
 		let button = {
 			"Columns": 6,
 			"Rows": 1,
@@ -146,7 +146,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			),
 			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"])
     
-	}*/
+	}
 	
 	
 });
