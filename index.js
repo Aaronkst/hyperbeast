@@ -26,7 +26,7 @@ const KEYBOARD_FRAME = {
    "receiver": "",
    "min_api_version":7,
    "type":"text",
-   "tracking_data":"get started",
+   "tracking_data":"['get started']",
    "text":"",
    "keyboard":{
       "Type":"keyboard",
