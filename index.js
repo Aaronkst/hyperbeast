@@ -23,57 +23,46 @@ const bot = new ViberBot({
 });
 
 const KEYBOARD_FRAME = {
-	"Type": "keyboard",
-	"DefaultHeight": false,
-	"BgColor": "#ffffff",
-	"Buttons": [
-		
-	]
-};
-const minApiVersion = 7;
-
+   "receiver": "",
+   "min_api_version":7,
+   "type":"text",
+   "text":"",
+   "keyboard":{
+      "Type":"keyboard",
+      "DefaultHeight":false,
+      "InputFieldState": "hidden",
+      "Buttons":[]
+   }
+}
 
 const userprofile = []
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	const uPF = userProfile.userProfile;
 	userprofile.push(uPF);
+  let button = {
+    "Columns": 6,
+    "Rows": 1,
+    "BgColor": "#4b3695",
+    "Text": "<font color='#FFFFFF'>Get Started</font>",
+    "InputFieldState": "hidden",
+    "TextHAlign": "center",
+    "TextVAlign": "middle",
+    "ActionType": "reply",
+    "TextSize": "large",
+    "ActionBody": "Hi"
+  }
+  KEYBOARD_FRAME.receiver = uPF.id;
+  EYBOARD_FRAME.text = "Hi "+uPF.name+"! Welcome! Nice to meet you!";
+  KEYBOARD_FRAME.keyboard.Buttons.push(button);
 	requestify.request('https://chatapi.viber.com/pa/send_message',{
   method: 'POST',
-  body: {
-   "receiver":uPF.id,
-   "min_api_version":7,
-   "type":"text",
-   "text":"Hi "+uPF.name+"! Nice to meet you! Welcome!",
-   "keyboard":{
-      "Type":"keyboard",
-      "DefaultHeight":true,
-      "Buttons":[
-         {
-            "Columns": 6,
-            "Rows": 1,
-            "BgColor": "#4b3695",
-            "Text": "<font color='#FFFFFF'>Get Started</font>",
-            "InputFieldState": "hidden",
-            "TextHAlign": "center",
-            "TextVAlign": "middle",
-            "ActionType": "reply",
-            "TextSize": "large",
-            "ActionBody": "Hi"
-
-         }
-      ]
-   }
-},
+  body: KEYBOARD_FRAME,
   headers: {
     "X-Viber-Auth-Token": "49e872d482e7d5f4-26150ff0836449f8-3f0f198008f8c8e6"
   }
 }
-  ).then(function(success){
-          console.log('keyboard success');
-        }).fail(function(error){
-          console.log('keyboard Error:', error);
-        })
+  )
 });
 
 
