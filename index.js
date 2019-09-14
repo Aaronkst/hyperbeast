@@ -68,7 +68,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 			"ActionBody": "Hi"
 		}
 	]
-}),["GetStarted"]).catch(function(error){
+}),'GetStarted').catch(function(error){
 		console.log('error', error);
 	});
 });
@@ -78,7 +78,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	if(message.text){
 		var userInput = message.text
-		var trackingData = message.trackingData[0]
+		var trackingData = message.trackingData
 	}
 	console.log("userinput", userInput)
 	console.log("trackingData", trackingData)
