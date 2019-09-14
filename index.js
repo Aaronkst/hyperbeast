@@ -28,7 +28,7 @@ const KEYBOARD_FRAME = {
       "InputFieldState": "hidden",
       "Buttons":[]
    }
-
+const minApiVersion = 7
 
 const userprofile = []
 // Perfect! Now here's the key part:
