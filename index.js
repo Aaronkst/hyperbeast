@@ -42,7 +42,11 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 	const uPF = userProfile.userProfile;
   const username = uPF.name
 	userprofile.push(uPF);
-  let getstartbutton = {"Columns": 6,
+	bot.sendMessage(uPF,new TextMessage('Hi! '+username,{
+      "Type":"keyboard",
+      "DefaultHeight":false,
+      "InputFieldState":"minimized",
+      "Buttons":[{"Columns": 6,
             "Rows": 1,
             "BgColor": "#4b3695",
             "Text": "<font color='#FFFFFF'>Get Started</font>",
@@ -50,9 +54,8 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "TextVAlign": "middle",
             "ActionType": "reply",
             "TextSize": "large",
-            "ActionBody": "Hi"}
-  KEYBOARD_FRAME.Buttons.push(getstartbutton)
-	bot.sendMessage(uPF,new TextMessage('Hi! '+username,KEYBOARD_FRAME),["GetStarted"]).catch(function(error){console.log(error)});
+            "ActionBody": "Hi"}]
+   }),["GetStarted"]).catch(function(error){console.log(error)});
 });
 
 
@@ -66,15 +69,15 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     console.log("trackingData", trackingData[0])
 	}
   if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[0] == 'longitude'){
-    var userLocation = []
-    userLocation.push(message.latitude)
-    userLocation.push(message.longitude)
+    var lat = message.latitude
+    var long = message.longitude
     var trackingData = message.trackingData
-    console.log("userinput", userLocation)
+    console.log("latitude", lat)
+    console.log("longitude", long)
     console.log("trackingData", trackingData[0])
   }	
 
-	if(userInput = 'Hi'){
+	if(trackingData[0] == 'GetStarted'){
 		let kbbutton = {
 			"Columns": 6,
 			"Rows": 1,
