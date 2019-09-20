@@ -63,10 +63,14 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	console.log(message)
-	if(message.text){
+	if(message == 'TextMessage'){
 		var userInput = message.text
 		var trackingData = message.trackingData
 	}
+  if(message == 'LocationMessage'){
+    var userLocation = [message.latitude,message.longitude]
+    var trackingData = message.trackingData
+  }
 	console.log("userinput", userInput)
   console.log("trackingData", trackingData[0])
 
