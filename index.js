@@ -53,18 +53,18 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "TextSize": "large",
             "ActionBody": "Hi"}
   KEYBOARD_FRAME.Buttons.push(getstartbutton)
-	bot.sendMessage(uPF,new TextMessage('Hi! '+username,KEYBOARD_FRAME)).catch(function(error){console.log(error)});
+	bot.sendMessage(uPF,new TextMessage('Hi! '+username,KEYBOARD_FRAME),["GetStarted"]).catch(function(error){console.log(error)});
 });
 
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
 	console.log(message)
-	if(message == 'TextMessage'){
+	if(message.requiredArguments[0] == 'text'){
 		var userInput = message.text
 		var trackingData = message.trackingData
 	}
-  if(message == 'LocationMessage'){
+  if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[0] == 'longitude'){
     var userLocation = [message.latitude,message.longitude]
     var trackingData = message.trackingData
   }
