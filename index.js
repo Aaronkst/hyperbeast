@@ -68,7 +68,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     console.log("userinput", userInput)
     console.log("trackingData", trackingData[0])
 	}
-  if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[0] == 'longitude'){
+  if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[1] == 'longitude'){
     var lat = message.latitude
     var long = message.longitude
     var trackingData = message.trackingData
