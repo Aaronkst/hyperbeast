@@ -31,7 +31,7 @@ const RICHMEDIA_FRAME = {
 const KEYBOARD_FRAME = {
       "Type":"keyboard",
       "DefaultHeight":false,
-      "InputFieldState":"minimized",
+      "InputFieldState":"hidden",
       "Buttons":[]
    }
 const minApiVersion = 7
@@ -45,7 +45,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 	bot.sendMessage(uPF,new TextMessage('Hi! '+username,{
       "Type":"keyboard",
       "DefaultHeight":false,
-      "InputFieldState":"minimized",
+      "InputFieldState":"hidden",
       "Buttons":[{"Columns": 6,
             "Rows": 1,
             "BgColor": "#4b3695",
