@@ -56,7 +56,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
   }
   KEYBOARD_FRAME.Buttons = []
   KEYBOARD_FRAME.Buttons.push(button);
-	bot.sendMessage(userprofile[0],[new TextMessage('Hi! '+usernmae),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["GetStarted"]).catch(function(error){console.log(error)});
+	bot.sendMessage(userprofile[0],[new TextMessage('Hi! '+usernmae),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))]).catch(function(error){console.log(error)});
 });
 
 
@@ -70,7 +70,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	console.log("userinput", userInput)
   console.log("trackingData", trackingData[0])
 
-	if(trackingData[0] == 'GetStarted'){
+	if(userInput = 'Hi'){
 		let kbbutton = {
 			"Columns": 6,
 			"Rows": 1,
