@@ -62,10 +62,9 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 		var trackingData = message.trackingData
 	}
 	console.log("userinput", userInput)
-	console.log("trackingData", trackingData)
   console.log("trackingData", trackingData[0])
 
-	if(trackingData == "[ 'GetStarted' ]"){
+	if(trackingData[0] == 'GetStarted'){
 		let button = {
 			"Columns": 6,
 			"Rows": 1,
