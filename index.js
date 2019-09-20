@@ -46,7 +46,6 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "Rows": 1,
             "BgColor": "#4b3695",
             "Text": "<font color='#FFFFFF'>Get Started</font>",
-            "InputFieldState": "hidden",
             "TextHAlign": "center",
             "TextVAlign": "middle",
             "ActionType": "reply",
@@ -63,13 +62,16 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	if(message.requiredArguments[0] == 'text'){
 		var userInput = message.text
 		var trackingData = message.trackingData
+    console.log("userinput", userInput)
+    console.log("trackingData", trackingData[0])
 	}
   if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[0] == 'longitude'){
     var userLocation = [message.latitude,message.longitude]
     var trackingData = message.trackingData
+    console.log("userinput", userLocation)
+    console.log("trackingData", trackingData[0])
   }
-	console.log("userinput", userInput)
-  console.log("trackingData", trackingData[0])
+	
 
 	if(userInput = 'Hi'){
 		let kbbutton = {
@@ -77,7 +79,6 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			"Rows": 1,
 			"BgColor": "#4b3695",
 			"Text": "<font color='#FFFFFF'>Location Share</font>",
-			"InputFieldState": "hidden",
 			"TextHAlign": "center",
 			"TextVAlign": "middle",
 			"ActionType": "location-picker",
