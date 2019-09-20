@@ -35,6 +35,7 @@ const userprofile = []
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	const uPF = userProfile.userProfile;
 	userprofile.push(uPF);
+  let td = "GetStarted"
   let button = {
     "Columns": 6,
     "Rows": 1,
@@ -49,7 +50,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
   }
   KEYBOARD_FRAME.Buttons = []
   KEYBOARD_FRAME.Buttons.push(button);
-	bot.sendMessage(userprofile[0],[new TextMessage('These are the Hyperbeast Themed products!'),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["GetStarted"])
+	bot.sendMessage(userprofile[0],[new TextMessage('These are the Hyperbeast Themed products!'),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],td)
 });
 
 
