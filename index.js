@@ -42,11 +42,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 	const uPF = userProfile.userProfile;
   const username = uPF.name
 	userprofile.push(uPF);
-	bot.sendMessage(uPF,new TextMessage('Hi! '+username,{
-        "Type":"keyboard",
-        "DefaultHeight":false,
-        "InputFieldState": "hidden",
-        "Buttons":[{"Columns": 6,
+  let getstartbutton = {"Columns": 6,
             "Rows": 1,
             "BgColor": "#4b3695",
             "Text": "<font color='#FFFFFF'>Get Started</font>",
@@ -55,8 +51,9 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "TextVAlign": "middle",
             "ActionType": "reply",
             "TextSize": "large",
-            "ActionBody": "Hi"}]
-     })).catch(function(error){console.log(error)});
+            "ActionBody": "Hi"}
+  KEYBOARD_FRAME.Buttons.push(getstartbutton)
+	bot.sendMessage(uPF,new TextMessage('Hi! '+username,KEYBOARD_FRAME)).catch(function(error){console.log(error)});
 });
 
 
