@@ -146,9 +146,9 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     RICHMEDIA_FRAME.Buttons.push(rmbutton4)
     RICHMEDIA_FRAME.Buttons.push(rmbutton5)
     RICHMEDIA_FRAME.Buttons.push(rmbutton6)
-		bot.sendMessage(userprofile[0],new TextMessage('These are the Hyperbeast Themed products!'),
+		bot.sendMessage(userprofile[0],[new TextMessage('These are the Hyperbeast Themed products!'),
       (new RichMediaMessage(RICHMEDIA_FRAME,"","","",minApiVersion)),
-      (new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion)),["LocationShare"]).catch(function(err){console.log(err)});
+      (new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"]).catch(function(err){console.log(err)});
     
 	}
 	
