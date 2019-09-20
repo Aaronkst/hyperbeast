@@ -31,7 +31,7 @@ const RICHMEDIA_FRAME = {
 const KEYBOARD_FRAME = {
       "Type":"keyboard",
       "DefaultHeight":false,
-      "InputFieldState":"hidden",
+      "InputFieldState":"minimized",
       "Buttons":[]
    }
 const minApiVersion = 7
@@ -66,12 +66,13 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     console.log("trackingData", trackingData[0])
 	}
   if(message.requiredArguments[0] == 'latitude' && message.requiredArguments[0] == 'longitude'){
-    var userLocation = [message.latitude,message.longitude]
+    var userLocation = []
+    userLocation.push(message.latitude)
+    userLocation.push(message.longitude)
     var trackingData = message.trackingData
     console.log("userinput", userLocation)
     console.log("trackingData", trackingData[0])
-  }
-	
+  }	
 
 	if(userInput = 'Hi'){
 		let kbbutton = {
