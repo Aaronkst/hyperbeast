@@ -22,6 +22,12 @@ const bot = new ViberBot({
 	avatar: "https://dl-media.viber.com/1/share/2/long/vibes/icon/image/0x0/800b/b85aacbdc579999439e781f37f8bec50b1238229df591acc3996c50e97b5800b.jpg" // It is recommended to be 720x720, and no more than 100kb.
 });
 
+const RICHMEDIA_FRAME = {
+      "ButtonsGroupColumns": 6,
+      "ButtonsGroupRows": 6,
+      "BgColor": "#3771b0",
+      "Buttons": []      
+    }
 const KEYBOARD_FRAME = {
       "Type":"keyboard",
       "DefaultHeight":false,
@@ -65,7 +71,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
   console.log("trackingData", trackingData[0])
 
 	if(trackingData[0] == 'GetStarted'){
-		let button = {
+		let kbbutton = {
 			"Columns": 6,
 			"Rows": 1,
 			"BgColor": "#4b3695",
@@ -77,23 +83,13 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			"TextSize": "large",
 			"ActionBody": "Hi"
 		}
-		KEYBOARD_FRAME.Buttons = []
-		KEYBOARD_FRAME.Buttons.push(button)
-		bot.sendMessage(userprofile[0],[
-			new TextMessage('These are the Hyperbeast Themed products!'),
-			new RichMediaMessage(
-			{
-      "ButtonsGroupColumns": 6,
-      "ButtonsGroupRows": 6,
-      "BgColor": "#3771b0",
-      "Buttons": [ 
-       {
+    let rmbutton1 = {
         "Columns":6,
         "Rows":3,
         "ActionType":"none",            
         "Image":"https://steamuserimages-a.akamaihd.net/ugc/708527825002071756/D0DC2B2A733A820E5FBD83D6187E3A26BEE57137/"
-       },
-       {
+       }
+    let rmbutton2 = {
         "Columns":6,
         "Rows":2,
         "ActionType":"none",
@@ -102,8 +98,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         "TextSize":"medium",
         "TextVAlign":"middle",
         "TextHAlign":"left"
-       },
-       {
+       }
+    let rmbutton3 = {
         "Columns":6,
         "Rows":1,
         "ActionType":"reply",
@@ -113,14 +109,14 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         "TextSize":"medium",
         "TextVAlign":"middle",
         "TextHAlign":"center"
-       },
-     {
+       }
+    let rmbutton4 = {
         "Columns":6,
         "Rows":3,
         "ActionType":"none",           
         "Image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6uj4UiN4jj0XMxYa2XiaIRt20M-wXlWomX35WOGqMO97ilJfAbA"
-       },
-       {
+       }
+    let rmbutton5 = {
         "Columns":6,
         "Rows":2,
         "ActionType":"none",
@@ -129,8 +125,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         "TextSize":"medium",
         "TextVAlign":"middle",
         "TextHAlign":"left"
-       },
-       {
+       }
+    let rmbutton6 = {
         "Columns":6,
         "Rows":1,
         "ActionType":"reply",
@@ -141,10 +137,18 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
         "TextVAlign":"middle",
         "TextHAlign":"center"
        }
-       ]      
-       
-    }
-			),
+		KEYBOARD_FRAME.Buttons = []
+		KEYBOARD_FRAME.Buttons.push(kbbutton)
+    RICHMEDIA_FRAME.Buttons = []
+    RICHMEDIA_FRAME.Buttons.push(rmbutton1)
+    RICHMEDIA_FRAME.Buttons.push(rmbutton2)
+    RICHMEDIA_FRAME.Buttons.push(rmbutton3)
+    RICHMEDIA_FRAME.Buttons.push(rmbutton4)
+    RICHMEDIA_FRAME.Buttons.push(rmbutton5)
+    RICHMEDIA_FRAME.Buttons.push(rmbutton6)
+		bot.sendMessage(userprofile[0],[
+			new TextMessage('These are the Hyperbeast Themed products!'),
+			new RichMediaMessage(RICHMEDIA_FRAME),
 			(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"])
     
 	}
