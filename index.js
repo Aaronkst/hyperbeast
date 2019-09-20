@@ -55,7 +55,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "ActionType": "reply",
             "TextSize": "large",
             "ActionBody": "Hi"}]
-   }),["GetStarted"]).catch(function(error){console.log(error)});
+   },"","","",minApiVersion),["GetStarted"]).catch(function(error){console.log(error)});
 });
 
 
