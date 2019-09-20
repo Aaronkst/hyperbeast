@@ -40,9 +40,9 @@ const userprofile = []
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	const uPF = userProfile.userProfile;
-  const usernmae = uPF.name
+  const username = uPF.name
 	userprofile.push(uPF);
-	bot.sendMessage(uPF,[new TextMessage('Hi! '+usernmae),(new KeyboardMessage({
+	bot.sendMessage(uPF,new TextMessage('Hi! '+username,{
         "Type":"keyboard",
         "DefaultHeight":false,
         "InputFieldState": "hidden",
@@ -56,7 +56,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
             "ActionType": "reply",
             "TextSize": "large",
             "ActionBody": "Hi"}]
-     }))]).catch(function(error){console.log(error)});
+     })).catch(function(error){console.log(error)});
 });
 
 
