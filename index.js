@@ -31,7 +31,7 @@ const RICHMEDIA_FRAME = {
 const KEYBOARD_FRAME = {
       "Type":"keyboard",
       "DefaultHeight":false,
-      "InputFieldState": "hidden",
+      "InputFieldState":"hidden",
       "Buttons":[]
    }
 const minApiVersion = 7
