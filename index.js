@@ -84,7 +84,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			"TextVAlign": "middle",
 			"ActionType": "location-picker",
 			"TextSize": "large",
-			"ActionBody": "Hi"
+			"ActionBody": "Location"
 		}
     let rmbutton1 = {
         "Columns":6,
