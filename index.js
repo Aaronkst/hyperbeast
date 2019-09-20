@@ -56,7 +56,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
   }
   KEYBOARD_FRAME.Buttons = []
   KEYBOARD_FRAME.Buttons.push(button);
-	bot.sendMessage(userprofile[0],[new TextMessage('Hi! '+usernmae),(new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))]).catch(function(error){console.log(error)});
+	bot.sendMessage(uPF,[new TextMessage('Hi! '+usernmae),(new KeyboardMessage(KEYBOARD_FRAME))]).catch(function(error){console.log(error)});
 });
 
 
