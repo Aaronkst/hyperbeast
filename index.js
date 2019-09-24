@@ -61,6 +61,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
+  console.log("response", response)
 	console.log(message)
 	if(message.requiredArguments[0] == 'text'){
 		var userInput = message.text
