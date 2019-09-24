@@ -89,6 +89,17 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 			"TextSize": "large",
 			"ActionBody": "Location"
 		}
+    let kbbutton1 = {
+      "Columns": 6,
+      "Rows": 1,
+      "BgColor": "#4b3695",
+      "Text": "<font color='#FFFFFF'>Phone Share</font>",
+      "TextHAlign": "center",
+      "TextVAlign": "middle",
+      "ActionType": "share-phone",
+      "TextSize": "large",
+      "ActionBody": "Location"
+    }
     let rmbutton1 = {
         "Columns":6,
         "Rows":3,
@@ -145,6 +156,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
        }
 		KEYBOARD_FRAME.Buttons = []
 		KEYBOARD_FRAME.Buttons.push(kbbutton)
+    KEYBOARD_FRAME.Buttons.push(kbbutton1)
     RICHMEDIA_FRAME.Buttons = []
     RICHMEDIA_FRAME.Buttons.push(rmbutton1)
     RICHMEDIA_FRAME.Buttons.push(rmbutton2)
