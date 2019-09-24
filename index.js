@@ -36,7 +36,6 @@ const KEYBOARD_FRAME = {
    }
 const minApiVersion = 7
 
-const userprofile = []
 // Perfect! Now here's the key part:
 bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFinish) => {
 	const uPF = userProfile.userProfile;
@@ -61,7 +60,7 @@ bot.on(BotEvents.CONVERSATION_STARTED, (userProfile, isSubscribed, context, onFi
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	// Echo's back the message to the client. Your bot logic should sit here.
-  console.log("response", response)
+  var uPF = response.userProfile
 	console.log(message)
 	if(message.requiredArguments[0] == 'text'){
 		var userInput = message.text
@@ -165,7 +164,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
     RICHMEDIA_FRAME.Buttons.push(rmbutton4)
     RICHMEDIA_FRAME.Buttons.push(rmbutton5)
     RICHMEDIA_FRAME.Buttons.push(rmbutton6)
-		bot.sendMessage(userprofile[0],[new TextMessage('These are the Hyperbeast Themed products!'),
+		bot.sendMessage(uPF,[new TextMessage('These are the Hyperbeast Themed products!'),
       (new RichMediaMessage(RICHMEDIA_FRAME,"","","",minApiVersion)),
       (new KeyboardMessage(KEYBOARD_FRAME,"","","",minApiVersion))],["LocationShare"]).catch(function(err){console.log(err)});
     
